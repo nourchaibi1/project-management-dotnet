@@ -68,6 +68,7 @@ classDiagram
 ```
 ---
 🏗️ Architecture
+
 The project follows a clean N-Tier Layered Architecture with strict separation of concerns:
 Layer	Project	Responsibility
 Domain	`AM.ApplicationCore`	Entities, business rules
@@ -76,12 +77,17 @@ Infrastructure	`AM.Infrastructure`	EF Core `DbContext`, data access, migrations
 Presentation	`AM.UI.Console`	Entry point, dependency injection
 > Swapping from in-memory data to SQL Server, or from a console UI to a Web API, only touches the outer layers — the core business logic stays untouched.
 ---
-✨ Features
-🔍 Flight filtering by destination, date, or ID
-📊 LINQ queries — sorting, aggregation, and projection (method & query syntax)
-⏱️ Duration analytics — average duration, durations in minutes
-🌱 Mock data layer — in-memory seeding for testing business logic
-💾 EF Core — Migrations, Fluent API configuration, lazy & eager loading
+ Features
+
+ Flight filtering by destination, date, or ID
+
+ LINQ queries — sorting, aggregation, and projection (method & query syntax)
+
+ Duration analytics — average duration, durations in minutes
+
+ Mock data layer — in-memory seeding for testing business logic
+
+ EF Core — Migrations, Fluent API configuration, lazy & eager loading
 ---
 🗂️ Project Structure
 ```
