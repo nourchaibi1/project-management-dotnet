@@ -15,11 +15,11 @@ namespace AM.ApplicationCore.Domain
         public string EmailAddress { get; set; }
         [Required]
         [MaxLength(300)]
-        [StringLength(250, ErrorMessage = "FirstName length must be lower or equal to 250")]
+        [StringLength(250, ErrorMessage = "FirstName length should be lower or equal to 250")]
         public string FirstName { get; set; }
         [Required]
         [MaxLength(300)]
-        [StringLength(250, ErrorMessage = "LastName length must be lower or equal to 250")]
+        [StringLength(250, ErrorMessage = "LastName length should be lower or equal to 250")]
         public string LastName { get; set; }
         [Key]
         public string PassportNumber { get; set; }
