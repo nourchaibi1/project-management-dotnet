@@ -23,10 +23,10 @@ namespace AM.UI.Console
         {
             var flightService = new BasicFlightService(InMemorySource.Flights, showLine);
 
-            flightService.GetFlightsSortedByDuration().ShowList("== GetFlightsSortedByDuration ==", showLine);
-            new[] { flightService.GetDurationsAverage() }.ShowList("== GetDurationsAverage ==", showLine);
-            flightService.GetDurationsInMinutes().ShowList("== GetDurationsInMinutes ==", showLine);
-            flightService.GetFlightsSortedByDurationLINQ().ShowList("== GetFlightsSortedByDurationLINQ ==", showLine);
+            flightService.GetFlightsSortedByDuration().ShowList(" GetFlightsSortedByDuration ", showLine);
+            new[] { flightService.GetDurationsAverage() }.ShowList(" GetDurationsAverage ", showLine);
+            flightService.GetDurationsInMinutes().ShowList(" GetDurationsInMinutes ", showLine);
+            flightService.GetFlightsSortedByDurationLINQ().ShowList(" GetFlightsSortedByDurationLINQ ", showLine);
         }
     }
 }
