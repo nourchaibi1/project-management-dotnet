@@ -1,41 +1,110 @@
-# Airport Management System
-
-This project is a modular application designed to manage airport operations, including flights, planes, staff, and passengers. It serves as a practical implementation of **Clean Architecture** and **Domain-Driven Design (DDD)**, leveraging **LINQ** for data manipulation and **Entity Framework Core** for data modeling.
-
-## 🏛 Domain Model & Class Structure
-
-The application architecture is defined by the relationships visualized in **docs/diagramme_de_classe.png**, which highlights several key design patterns:
-
-* **Polymorphic Inheritance:** The `Passenger` class serves as the base entity, with `Staff` and `Traveller` inheriting its properties, allowing for specialized handling of different user roles.
-* **Association Mapping:** 
-    * The system establishes a **0..1 to many** relationship between `Plane` and `Flight`.
-    * A **Many-to-Many** relationship exists between `Flight` and `Passenger`, linked through the `Ticket` association class.
-* **Enumerated Types:** The use of `PlaneType` (Boeing/Airbus) provides type safety for plane categorization.
-* **Data Properties:** Entities are structured with specific types (e.g., `double` for prices, `DateTime` for scheduling, and `bool` for VIP status) to maintain data integrity across the system.
-
-![Domain Model Class Diagram](docs/diagramme_de_classe.png)
-
-## 🚀 Key Features
-
-* **Flight Filtering:** Dynamically search and display flights by `Destination`, `FlightDate`, or `FlightId`.
-* **Advanced LINQ Queries:** 
-    * Sorting: `GetFlightsSortedByDuration` (Method & Query syntax).
-    * Aggregation: `GetDurationsAverage` for operational analytics.
-    * Projection: `GetDurationsInMinutes` demonstrating custom object mapping.
-* **Mock Data Layer:** A `static` data engine that simulates complex database seeding for testing business logic.
-
-## 🛠 Tech Stack
-
-* **.NET 8**
-* **C#**
-* **LINQ (Language Integrated Query)**
-* **Entity Framework Core**
-
-## 📦 How to Run
-
-1. Navigate to the project root folder.
-2. Build the solution: `dotnet build`
-3. Run the application: `dotnet run`
-
+✈️ Airport Management System
+> A .NET 8 console application for managing airport operations — flights, planes, staff, and passengers — built as a practical exercise in **Clean Architecture**, **Domain-Driven Design**, and **Entity Framework Core**.
 ---
-*Developed as part of an Advanced Software Engineering lab to demonstrate enterprise-grade application structure.*
+🚀 Tech Stack
+![.NET](https://img.shields.io/badge/.NET_8-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![EF Core](https://img.shields.io/badge/Entity_Framework_Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![LINQ](https://img.shields.io/badge/LINQ-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+---
+📐 Domain Model
+```mermaid
+classDiagram
+    class Plane {
+        +int PlaneId
+        +int Capacity
+        +DateTime ManufactureDate
+        +PlaneType PlaneType
+    }
+
+    class Flight {
+        +int FlightId
+        +string Departure
+        +string Destination
+        +DateTime FlightDate
+        +DateTime EffectiveArrival
+        +float EstimatedDuration
+    }
+
+    class Ticket {
+        +double Price
+        +int Seat
+        +bool VIP
+    }
+
+    class Passenger {
+        +string FirstName
+        +string LastName
+        +DateTime BirthDate
+        +string EmailAddress
+        +string PassportNumber
+        +string TelNumber
+    }
+
+    class Staff {
+        +DateTime EmployementDate
+        +string Function
+        +double Salary
+    }
+
+    class Traveller {
+        +string HealthInformation
+        +string Nationality
+    }
+
+    class PlaneType {
+        <<enumeration>>
+        Boeing
+        Airbus
+    }
+
+    Plane "0..1" --> "*" Flight : operates
+    Flight "*" --> "*" Passenger : via Ticket
+    Ticket --> Flight
+    Ticket --> Passenger
+    Passenger <|-- Staff
+    Passenger <|-- Traveller
+    Plane --> PlaneType
+```
+---
+🏗️ Architecture
+The project follows a clean N-Tier Layered Architecture with strict separation of concerns:
+Layer	Project	Responsibility
+Domain	`AM.ApplicationCore`	Entities, business rules
+Application	`AM.ApplicationCore`	Interfaces (`IBasicFlightService`), service orchestration
+Infrastructure	`AM.Infrastructure`	EF Core `DbContext`, data access, migrations
+Presentation	`AM.UI.Console`	Entry point, dependency injection
+> Swapping from in-memory data to SQL Server, or from a console UI to a Web API, only touches the outer layers — the core business logic stays untouched.
+---
+✨ Features
+🔍 Flight filtering by destination, date, or ID
+📊 LINQ queries — sorting, aggregation, and projection (method & query syntax)
+⏱️ Duration analytics — average duration, durations in minutes
+🌱 Mock data layer — in-memory seeding for testing business logic
+💾 EF Core — Migrations, Fluent API configuration, lazy & eager loading
+---
+🗂️ Project Structure
+```
+AirportManagement/
+├── AM.ApplicationCore/       # Domain entities + service interfaces
+├── AM.Infrastructure/        # EF Core DbContext + data access
+├── AM.UI.Console/            # Console entry point
+└── docs/
+    └── diagramme_de_classe.png
+```
+---
+⚙️ Getting Started
+Prerequisites
+.NET 8 SDK
+Run
+```bash
+git clone <repo-url>
+cd AirportManagement
+dotnet build
+dotnet run --project AM.UI.Console
+```
+---
+📸 Class Diagram
+![Domain Model Class Diagram](docs/diagramme_de_classe.png)
+---
+Developed as part of an Advanced Software Engineering lab to demonstrate enterprise-grade application structure.
