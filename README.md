@@ -4,7 +4,7 @@
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 ![.NET](https://img.shields.io/badge/.NET_8-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
 ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
@@ -13,7 +13,7 @@
 
 ---
 
-## 📐 Domain Model
+##  Domain Model
 
 ```mermaid
 classDiagram
@@ -91,17 +91,17 @@ The project follows a clean **N-Tier Layered Architecture** with strict separati
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🔍 **Flight filtering** by destination, date, or ID
-- 📊 **LINQ queries** — sorting, aggregation, and projection (method & query syntax)
-- ⏱️ **Duration analytics** — average duration, durations in minutes
-- 🌱 **Mock data layer** — in-memory seeding for testing business logic
-- 💾 **EF Core** — Migrations, Fluent API configuration, lazy & eager loading
+-  **Flight filtering** by destination, date, or ID
+-  **LINQ queries** — sorting, aggregation, and projection (method & query syntax)
+-  **Duration analytics** — average duration, durations in minutes
+-  **Mock data layer** — in-memory seeding for testing business logic
+-  **EF Core** — Migrations, Fluent API configuration, lazy & eager loading
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 AirportManagement/
@@ -114,7 +114,7 @@ AirportManagement/
 
 ---
 
-## ⚙️ Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -131,7 +131,7 @@ dotnet run --project AM.UI.Console
 
 ---
 
-## 📸 Class Diagram
+##  Class Diagram
 
 ![Domain Model Class Diagram](docs/diagramme_de_classe.png)
 
