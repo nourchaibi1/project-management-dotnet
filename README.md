@@ -76,7 +76,7 @@ classDiagram
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 The project follows a clean **N-Tier Layered Architecture** with strict separation of concerns:
 
