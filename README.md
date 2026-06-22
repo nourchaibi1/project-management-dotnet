@@ -1,4 +1,4 @@
-# ✈️ Airport Management System
+#  Airport Management System
 
 > A .NET 8 console application for managing airport operations — flights, planes, staff, and passengers — built as a practical exercise in **Clean Architecture**, **Domain-Driven Design**, and **Entity Framework Core**.
 
